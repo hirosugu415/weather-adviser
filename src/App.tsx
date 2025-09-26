@@ -13,14 +13,19 @@ function App() {
   }, []);
 
   // Service Workerにメッセージを送信する関数
-  const postMessageToSW = () => {
-    if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-      navigator.serviceWorker.controller.postMessage({
-        type: 'SHOW_NOTIFICATION',
-      });
-      console.log('通知リクエストを送信しました。');
-    }
-  };
+const postMessageToSW = () => {
+  if ('serviceWorker' in navigator) {
+    // サービスワーカーが準備できるまで待つ
+    navigator.serviceWorker.ready.then((registration) => {
+      if (registration.active) {
+        registration.active.postMessage({
+          type: 'SHOW_NOTIFICATION',
+        });
+        console.log('通知リクエストを送信しました。');
+      }
+    });
+  }
+};
 
   // 通知開始ボタンの処理
   const handleStart = async () => {
