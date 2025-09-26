@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://kurosan-5.github.io/weather-adviser",
+  "homepage": "https://hirosugu415.github.io/weather-adviser",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
