@@ -8,6 +8,12 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      injectManifest: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        // Service Workerのファイル名とディレクトリを指定
+        swSrc: 'src/sw.ts',
+      },
+      
       // PWAの manifest.json の設定
       manifest: {
         name: 'weather-notify', // アプリ名
